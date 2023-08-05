@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="
+bg-slate-800
+text-yellow-300
+flex
+justify-center
+items-center
+h-screen
+">
+
+<!-- ----------------------------------------FORMULARIO DE LOGIN------------------------------------------- -->
+
+    <main id="formLogin" class="
+    bg-slate-900
+    rounded-xl
+    flex
+    flex-col
+    gap-3">
+        <h1 class="
+        bg-slate-700
+        p-3
+        rounded-t-xl
+        text-2xl
+        flex
+        justify-center
+        ">Login</h1>
+        <form action="" class="
+        flex
+        flex-col
+        gap-1
+        mx-5">
+            <label for="name">Nome</label>
+            <input id="name" type="text" placeholder="Insira seu nome aqui..."
+            class="
+            bg-slate-800
+            rounded
+            p-1
+            focus:outline-none
+            focus:bg-slate-700">
+            <label for="senha">Senha</label>
+            <input id="senha" type="text" placeholder="Insira sua senha aqui..."
+            class="
+            bg-slate-800
+            rounded
+            p-1
+            focus:outline-none
+            focus:bg-slate-700">
+        </form>
+        <button class="
+        bg-teal-500
+        rounded-md
+        py-1
+        hover:bg-teal-700
+        mx-5
+        " onclick="logar()">Login</button>
+        <p class="
+        mx-5
+        mb-5">Não tem conta? <button class="text-teal-500 hover:text-teal-400" onclick="formCadastro()">Cadastre-se</button></p>
+    </main>
+
+<!-- ----------------------------------------FORMULARIO DE CADASTRO------------------------------------------- -->
+
+    <main id="formCadastro" class="
+    hidden
+    bg-slate-900
+    rounded-xl
+    flex
+    flex-col
+    gap-3">
+        <h1 class="
+        bg-slate-700
+        p-3
+        rounded-t-xl
+        text-2xl
+        flex
+        justify-center
+        ">Cadastro</h1>
+        <form id="formularioCad" action="" class="
+        flex
+        flex-col
+        gap-1
+        mx-5">
+            <label for="name">Nome</label>
+            <input id="nameCad" type="text" placeholder="Insira seu nome aqui..."
+            class="
+            bg-slate-800
+            rounded
+            p-1
+            focus:outline-none
+            focus:bg-slate-700">
+            <label for="idade">Idade</label>
+            <input id="idade" type="number" placeholder="Insira sua idade aqui..."
+            class="
+            bg-slate-800
+            rounded
+            p-1
+            focus:outline-none
+            focus:bg-slate-700">
+            <label for="senha">Senha</label>
+            <input id="senhaCad" type="text" placeholder="Insira sua senha aqui..."
+            class="
+            bg-slate-800
+            rounded
+            p-1
+            focus:outline-none
+            focus:bg-slate-700">
+            <label for="confSenha">Confirme a senha</label>
+            <input id="confSenha" type="text" placeholder="Confirme sua senha aqui..."
+            class="
+            bg-slate-800
+            rounded
+            p-1
+            focus:outline-none
+            focus:bg-slate-700">
+        </form>
+        <button class="
+        bg-teal-500
+        rounded-md
+        py-1
+        hover:bg-teal-700
+        mx-5
+        " onclick="cadastrar()">Cadastrar</button>
+        <p class="
+        mx-5
+        mb-5">Já tem conta? <button class="text-teal-500 hover:text-teal-400" onclick="formLogin()">Logue-se</button></p>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

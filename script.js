@@ -6,20 +6,24 @@ function logar() {
 
     // VERIFICA SE O ADM ESTA SENDO LOGADO
     let adm = JSON.parse(localStorage.getItem('adm'))
-    if (adm.nome == nome || adm.senha == senha) {
+    if (adm.nome == nome && adm.senha == senha) {
+        localStorage.setItem('logado', adm.nome)
         window.location.replace('pages/adm.html')
     } else {
-        // VERIFICA EM TODOS OS USUARIOS SE NOME E SENHA CONSIDEM
+        // VERIFICA EM TODOS OS USUARIOS SE NOME E SENHA CONSIDEM DENTRO DO ARRAY DE USUARIOS
         let ids = parseInt(localStorage.getItem('id'))
-        for (let i = 0; i < ids; i++) {
+        for (let i = 0; i <= ids; i++) {
             let dado = JSON.parse(localStorage.getItem('user' + i))
 
-            if (dado.nome === nome || dado.senha === senha) {
+            if (dado.nome === nome && dado.senha === senha) {
                 localStorage.setItem('logado', dado.nome)
                 window.location.replace('pages/home.html')
-            } else {
-                alert('nome ou senha invalidos!')
             }
+        }
+        // VERIFICA SE LOGIN FOI EFETUADO DEPOIS DO LOOP
+        // SE NAO, EXIBE ALERTA DE ERRO
+        if (localStorage.getItem('logado') == '') {
+            alert('Nome ou senha invalidos!')
         }
     }
 }
@@ -95,3 +99,53 @@ function verificaLogin() {
 // CADASTRA ADM SEMPRE QUE PAGINA FOR CARREGADA PARA NAO PRECISAR DE CADASTRO
 localStorage.setItem('adm', JSON.stringify({ nome: 'mayck', senha: '123' }))
 
+// EXIBE TODOS OS USUARIOS NA TELA DO ADM
+function exibeUsers() {
+    let users = document.querySelector('#usuarios')
+    // LIMPA USUARIOS EXIBIDOS PARA NAO DUPLICAR DADOS
+    users.innerHTML = ''
+    
+    let ids = parseInt(localStorage.getItem('id'))
+    for (let i = 0; i <= ids; i++) {
+        let dado = JSON.parse(localStorage.getItem('user' + i))
+
+        // SE O LOCALSTORAGE ESTIVER VAZIO NADA ACONTECERA
+        if (dado != null) {
+
+            users.innerHTML += `
+            <div class='grid grid-cols-4 gap-0'>
+            <p class='flex justify-center'>${dado.id}°</p>
+            <p class='flex justify-center'>Nome: ${dado.nome}</p>
+            <p class='flex justify-center'>Idade: ${dado.idade}</p>
+            <button class='bg-red-500 hover:bg-red-700 px-2
+            text-white' onclick='apagaUser(${dado.id})'>Apagar</button>
+            <div/>
+            `
+        }
+    }
+    // SE NENHUM USUARIO FOR ENCONTRADO
+    if(users.innerHTML == ''){
+        users.innerHTML = 'NENHUM USUARIO CADASTRADO...'
+    }
+
+}
+
+// APAGAR USUARIO
+function apagaUser(e) {
+    if(confirm('Certeza que deseja apagar este usuario?') == true){
+        localStorage.removeItem('user' + e)
+        
+        // RECARREGA USUARIOS A SEREM MOSTRADOS
+        exibeUsers()
+    }
+}
+
+// APAGA TODOS OS DADOS DO LOCALSTORAGE
+function apagarTudo(){
+    if(confirm('Certeza que deseja apagar todos os dados?') == true){
+        localStorage.clear()
+
+        // RECARREGA USUARIOS A SEREM MOSTRADOS
+        exibeUsers()
+    }
+}

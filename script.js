@@ -40,15 +40,17 @@ function formLogin() {
     document.querySelector('#formCadastro').style.display = 'none'
 }
 
+formCadastro()
+
 // REALIZA CADASTRO NO LOCALSTORAGE
 function cadastrar() {
     let name = document.querySelector('#nameCad').value
     let idade = document.querySelector('#idade').value
-    let senha = document.querySelector('#senhaCad').value
-    let confSenha = document.querySelector('#confSenha').value
+    let senha = document.querySelector('#senhaCad').value.toString()
+    let confSenha = document.querySelector('#confSenha').value.toString()
 
     // VERIFICA SE SENHAS SAO IGUAIS
-    if (senha == confSenha) {
+    if (senha == confSenha){
 
         // VERIFICA SE LOCALSTORAGE(ID) JA EXISTE
         if (localStorage.getItem('id')) {

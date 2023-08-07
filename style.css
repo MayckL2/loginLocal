@@ -1,0 +1,7 @@
+.spanSenha:hover .reqSenha{
+    display: block;
+}
+
+.reqSenha{
+    display: none;
+}

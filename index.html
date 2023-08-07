@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body class="
@@ -105,7 +106,8 @@ h-screen
             p-1
             focus:outline-none
             focus:bg-slate-700">
-            <label for="senha">Senha</label>
+            <label class="flex gap-2" for="senha">Senha <span class="spanSenha relative">
+                <p class="bg-slate-600 rounded-full px-2">?</p> <p class="reqSenha absolute top-0 left-10 z-10 bg-slate-600 w-max px-2 rounded">Sua senha deve conter tal tal tal...</p></span></label>
             <input id="senhaCad" type="text" placeholder="Insira sua senha aqui..."
             class="
             bg-slate-800
@@ -113,7 +115,8 @@ h-screen
             p-1
             focus:outline-none
             focus:bg-slate-700">
-            <label for="confSenha">Confirme a senha</label>
+            <label class="flex gap-2" for="senha">Confirme sua Senha <span class="spanSenha relative">
+                <p class="bg-slate-600 rounded-full px-2">?</p> <p class="reqSenha absolute top-0 left-10 z-10 bg-slate-600 w-max px-2 rounded">Sua senha deve conter tal tal tal...</p></span></label>
             <input id="confSenha" type="text" placeholder="Confirme sua senha aqui..."
             class="
             bg-slate-800
